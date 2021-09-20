@@ -1,16 +1,123 @@
+
 * {
     margin: 0;
     padding: 0;
 }
+
+header {
+    height: 15%;
+    width: 100%;
+    margin: 0px;
+    padding: 20px;
+    border-style: solid;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-color: rgb(206, 150, 8);
+    border-width: 2px;
+    margin-bottom: 20px;
+}
+
 
 body {
     height: 70%;
     width: 100%;
     color: rgb(206, 150, 8);
     background-color: rgb(53, 52, 52);
+    justify-content: center;
+    text-align: center;
 }
 
-#full-ball:active {
+#instructions {
+    height: 200px;
+    width: 30%;
+    margin: auto;
+    text-align: left;
+}
+
+#full-ball {
+    display: block;
+    height: 450px;
+    width: 450px;
+    background-color: black;
+    margin: auto;
+    padding: 0px;
+    border-radius: 50%;
+    justify-content: center;
+}
+
+#full-ball:hover{
+    cursor: pointer;
+}
+
+#reflective {
+    width: 30px;
+    height: 1px;
+    border-radius: 50%;
+    background-color: rgb(245, 241, 241);
+    box-shadow: 0px 0px 20px 30px rgb(245, 241, 241);
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+
+
+form {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#display-circle {
+    height: 160px;
+    width: 160px;
+    border-style: inset;
+    border-width: 1px;
+    border-color: rgb(245, 241, 241);
+    border-radius: 50%;
+    position: relative;
+    left: 143px;
+    top: 133px;
+    background-color: rgb(9, 9, 97);
+}
+
+#message-display {
+    width: 0;
+    height: 0;
+    color: white;
+    border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 100px solid rgb(87, 87, 245);
+    display: block;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: 40px;
+    margin: auto;
+}
+
+#message {
+    font-size: small;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    left: -25px;
+    top: -95px;
+}
+
+#inquiry-bar {
+    height: 40px;
+    width: 300px;
+    border-radius: 10px;
+    padding-left: 5px;
+}
+
+
+footer {
+    height: 15%;
+    width: 100%;
+}
+
+.ball {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
@@ -34,3 +141,107 @@ body {
       transform: translate3d(4px, 0, 0);
     }
   }
+
+  .fade-in {
+    animation: fadeIn ease 3s;
+    -webkit-animation: fadeIn ease 3s;
+    -moz-animation: fadeIn ease 3s;
+    -o-animation: fadeIn ease 3s;
+    -ms-animation: fadeIn ease 3s;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut ease 1s;
+    -webkit-animation: fadeOut ease 1s;
+    -moz-animation: fadeOut ease 1s;
+    -o-animation: fadeOut ease 1s;
+    -ms-animation: fadeOut ease 1s;
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-moz-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-webkit-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-o-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  
+  @-ms-keyframes fadeOut {
+    0% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+  }
+}

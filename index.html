@@ -11,25 +11,42 @@
 <body>
     <header>
         <div class="title-bar">
-            Welcome to Magic 8 Ball!
+            <h1>Welcome to Magic 8 Ball!</h1>
         </div>
     </header>
     <main>
         <p class="instructions"> Hi! My name is "8 Ball", I'm the classic fortune telling toy reimagined and accessible anywhere! 
             <br>
             <br>
-        Instructions: Type your question into the inquiry bar for 8 Ball to read. 
-        <br> 
-        Once your question is typed, click on 8 Ball and wait for him to shake things up and display the answer to your question!</p>
-        <input type="text" id="inquiry-bar" placeholder="Ask 8 Ball!">
-        <div class="ball" id="full-ball">
-            <div class="ball" id="display-circle"></div>
+        <ol>Instructions: 
+            <br>
+        <li>1: Type a question in the inquiry bar for 8 Ball to read.<br>
+        (Or just ask out loud or in your head!)</li>
+        <br>
+        <li>2: When you've declared your curious question, click on 8 Ball and wait for him to shake things up!</li>
+        <br>
+        <li>If you type your question, don't expect a different answer if you ask it twice!</li>
+        </ol>
+        </p>
+        <form>
+            <input type="text" id="inquiry-bar" placeholder="Ask 8 Ball!">
+            
+        </form>
+        <br>
+        <div id="full-ball">
+            <div id="eight"></div>
+            <div id="reflective"></div>
+            <div id="display-circle">
+                <div id="message-display">
+                    <div id="message"></div>
+                </div>
+            </div>
         </div>
     </main>
     <footer>
 
     </footer>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
 </body>
 
