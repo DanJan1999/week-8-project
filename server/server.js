@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const repeatedQs = []
+const baseUrl = `http://localhost:4005`
 
 app.get(`/`, (req, res) => {
     res.sendFile(path.join(__dirname, `../index.html`))
@@ -40,6 +40,7 @@ app.get(`/fortune`, (req, res) => {
     let randomFortune = fortunes[randomIndex]
     res.status(200).send(randomFortune)
 });
+
 
  
 

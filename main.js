@@ -1,3 +1,4 @@
+// const { app } = require("express");
 
 
 const ball = document.querySelector(`#full-ball`);
@@ -8,11 +9,21 @@ const triangle = document.querySelector(`#message-display`);
 
 const baseUrl = `http://localhost:4005`
 
+let repeatedQuestions = []
+
+const ballToggle = () => ball.classList.toggle(`ball`)
+const fadeOut = () => {
+    message.classList.toggle(`fade-out`)
+    triangle.classList.toggle(`fade-out`)
+}
+const fadeIn = () => {
+    message.classList.toggle(`fade-in`)
+    triangle.classList.toggle(`fade-in`)
+}
 
 const submitQ = (e) => {
     e.preventDefault()
     let inquirys = inquiry.value
-    let repeatedQuestions = []
     const runGet = () => {
         e.preventDefault()
         axios.get(`${baseUrl}/fortune`)
@@ -21,18 +32,17 @@ const submitQ = (e) => {
             message.classList.toggle(`fade-out`)
             triangle.classList.toggle(`fade-out`)
             let repQ = { type:`${res.data.type}`, key:`${inquirys}`, value:`${res.data.value}` }
+            if (repQ.type === `positive` || repQ.type === `negative`) {
             repeatedQuestions.push(repQ)
+            }
             setTimeout(() => {
-                message.classList.toggle(`fade-out`)
-                triangle.classList.toggle(`fade-out`)
-                message.classList.toggle(`fade-in`)
-                triangle.classList.toggle(`fade-in`)
+                fadeOut()
+                fadeIn()
                 message.textContent = res.data.value
-            }, 1000)
+            }, 700)
             setTimeout(() => {
-                ball.classList.toggle(`ball`)
-                message.classList.toggle(`fade-in`)
-                triangle.classList.toggle(`fade-in`)
+                ballToggle()
+                fadeIn()
             }, 5000)
         })
     }
@@ -42,40 +52,29 @@ const submitQ = (e) => {
     if (repeatedQuestions.length === 0){
         runGet()
     } else if (repeatedQuestions.length >= 1){
-    for (const obj of repeatedQuestions) {
-        for (const id of obj) {
-        if (id.type === `positive` || id.type === `negative`) {
-            if (id.key === `${inquirys}`) {
-                ball.classList.toggle(`ball`)
-                message.classList.toggle(`fade-out`)
-                triangle.classList.toggle(`fade-out`)
+    for (let i = 0; i < repeatedQuestions.length; i++) {
+            if (repeatedQuestions[i].key === `${inquirys}`) {
+                ballToggle()
+                fadeOut()
                 setTimeout(() => {
-                    message.classList.toggle(`fade-out`)
-                    triangle.classList.toggle(`fade-out`)
-                    message.classList.toggle(`fade-in`)
-                    triangle.classList.toggle(`fade-in`)
-                    message.textContent = id.value
-                        }, 1000)
+                    fadeOut()
+                    fadeIn()
+                    message.textContent = repeatedQuestions[i].value
+                        }, 700)
                         setTimeout(() => {
-                            ball.classList.toggle(`ball`)
-                            message.classList.toggle(`fade-in`)
-                            triangle.classList.toggle(`fade-in`)
+                            ballToggle()
+                            fadeIn()
                         }, 5000)
-                    } else {
+                    }else {
                         runGet()
                     }
-                } else {
-                    runGet()
-                }
-             }
+                } 
             }
-        }
         inquiry.value = ``
     } else {
         alert(`Please type a question`)
     }
 };
-
 
 const submitHandler = () => {
     const submit = form.submit(submitQ)
@@ -83,5 +82,3 @@ const submitHandler = () => {
 };
 
 ball.addEventListener(`click`, submitQ);
-
-
