@@ -38,12 +38,14 @@ const submitQ = (e) => {
     }
     console.log(inquirys)
     console.log(repeatedQuestions)
+    if (inquiry && inquirys) {
     if (repeatedQuestions.length === 0){
         runGet()
     } else if (repeatedQuestions.length >= 1){
-    for ( let i = 0; i < repeatedQuestions.length; i++) {
-        if (repeatedQuestions.contains(`positive`) || repeatedQuestions.contains(`negative`)) {
-            if (repeatedQuestions.contains(`${inquirys}`)) {
+    for (const obj of repeatedQuestions) {
+        for (const id of obj) {
+        if (id.type === `positive` || id.type === `negative`) {
+            if (id.key === `${inquirys}`) {
                 ball.classList.toggle(`ball`)
                 message.classList.toggle(`fade-out`)
                 triangle.classList.toggle(`fade-out`)
@@ -52,7 +54,7 @@ const submitQ = (e) => {
                     triangle.classList.toggle(`fade-out`)
                     message.classList.toggle(`fade-in`)
                     triangle.classList.toggle(`fade-in`)
-                    message.textContent = repeatedQuestions[i].key
+                    message.textContent = id.value
                         }, 1000)
                         setTimeout(() => {
                             ball.classList.toggle(`ball`)
@@ -66,8 +68,12 @@ const submitQ = (e) => {
                     runGet()
                 }
              }
+            }
         }
         inquiry.value = ``
+    } else {
+        alert(`Please type a question`)
+    }
 };
 
 
