@@ -7,8 +7,6 @@ const form = document.querySelector(`form`);
 const inquiry = document.querySelector(`#inquiry-bar`);
 const triangle = document.querySelector(`#message-display`);
 
-const baseUrl = `http://localhost:4005`
-
 let repeatedQuestions = []
 
 const ballToggle = () => ball.classList.toggle(`ball`)
@@ -26,7 +24,7 @@ const submitQ = (e) => {
     let inquirys = inquiry.value
     const runGet = () => {
         e.preventDefault()
-        axios.get(`${baseUrl}/fortune`)
+        axios.get(`/fortune`)
         .then((res) => {
             ball.classList.toggle(`ball`)
             message.classList.toggle(`fade-out`)
