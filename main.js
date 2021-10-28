@@ -43,14 +43,15 @@ const submitQ = (e) => {
                 fadeIn()
             }, 5000)
         })
+        return
     }
     console.log(inquirys)
     console.log(repeatedQuestions)
     if (inquiry && inquirys) {
-    if (repeatedQuestions.length === 0){
-        runGet()
-    } else if (repeatedQuestions.length >= 1){
-    for (let i = 0; i < repeatedQuestions.length; i++) {
+        if (repeatedQuestions.length === 0){
+            runGet()
+        } else if (repeatedQuestions.length >= 1){
+        for (let i = 0; i < repeatedQuestions.length; i++) {
             if (repeatedQuestions[i].key === `${inquirys}`) {
                 ballToggle()
                 fadeOut()
@@ -63,6 +64,7 @@ const submitQ = (e) => {
                             ballToggle()
                             fadeIn()
                         }, 5000)
+                
                     }else {
                         runGet()
                     }
